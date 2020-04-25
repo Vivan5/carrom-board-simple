@@ -1,0 +1,109 @@
+//giving wall variable
+var wall1 = createSprite(200,50,250,10);
+var wall2 = createSprite(350,200,10,250);
+var wall3 = createSprite(200,350,250,10);
+var wall4 = createSprite(50,200,10,250);
+
+//giving ball variable
+var ball1 = createSprite(200,200,20,20);
+ball1.shapeColor = "red";
+var ball2 = createSprite(175,200,20,20);
+var ball3 = createSprite(225,200,20,20);
+var ball4 = createSprite(200,175,20,20);
+var ball5 = createSprite(200,225,20,20);
+
+//giving line variable
+var line1 = createSprite(300,100,2,100);
+var line2 = createSprite(100,300,2,100);
+var line3 = createSprite(300,100,100,2);
+var line4 = createSprite(100,300,100,2);
+var line5 = createSprite(100,100,2,100);
+var line6 = createSprite(100,100,100,2);
+var line7 = createSprite(300,300,2,100);
+var line8 = createSprite(300,300,100,2);
+
+//giving striker variable
+var striker = createSprite(200,300,40,40);
+
+function draw() {
+  background(rgb(255,253,208));
+  
+//colliding balls with wall
+ball1.collide(wall1);
+ball1.collide(wall2);
+ball1.collide(wall3);
+ball1.collide(wall4);
+
+ball2.collide(wall1);
+ball2.collide(wall2);
+ball2.collide(wall3);
+ball2.collide(wall4);
+
+ball3.collide(wall1);
+ball3.collide(wall2);
+ball3.collide(wall3);
+ball3.collide(wall4);
+
+ball4.collide(wall1);
+ball4.collide(wall2);
+ball4.collide(wall3);
+ball4.collide(wall4);
+ball5.collide(wall1);
+
+ball5.collide(wall2);
+ball5.collide(wall3);
+ball5.collide(wall4);
+
+striker.collide(wall1);
+striker.collide(wall2);  
+striker.collide(wall3);
+striker.collide(wall4);
+
+striker.bounce(ball1);
+striker.bounce(ball2);
+striker.bounce(ball3);
+striker.bounce(ball4);
+striker.bounce(ball5);
+ 
+// press up arrow to move striker upwards
+if (keyDown(UP_ARROW)) {
+  striker.velocityX =3;
+  striker.velocityY =-3;
+  
+}
+
+// press down arrow to move striker downwards
+if (keyDown(DOWN_ARROW)) {
+  striker.velocityX =-3;
+  striker.velocityY =3;
+}
+
+// press left arrow to move striker towards left
+if (keyDown(LEFT_ARROW)) {
+  striker.velocityX =-3;
+  striker.velocityY =-3;
+}
+
+// press right arrow to move striker towards right
+if (keyDown(RIGHT_ARROW)) {
+  striker.velocityX =3;
+  striker.velocityY =3;
+}
+if( (ball1.x>350||ball1.x<50||ball1.y>350||ball1.y<50)&&
+(ball2.x>350||ball2.x<50||ball2.y>350||ball2.y<50)&&
+(ball3.x>350||ball3.x<50||ball3.y>350||ball3.y<50)&&
+(ball4.x>350||ball4.x<50||ball4.y>350||ball4.y<50)&&
+(ball5.x>350||ball5.x<50||ball5.y>350||ball5.y<50))
+  text("player wins",200,200,10);
+
+
+
+
+
+  drawSprites();
+
+}
+
+
+
+
